@@ -15,6 +15,7 @@ class Router
     private string $url;
     private string $method;
 
+    
     public function __construct()
     {
         $this->url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);

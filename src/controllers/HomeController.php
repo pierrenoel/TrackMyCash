@@ -1,7 +1,9 @@
 <?php 
 
 namespace Pierre\TrackMyCash\controllers;
+
 use Pierre\TrackMyCash\core\Response;
+use Pierre\TrackMyCash\core\Database;
 
 class HomeController 
 {
@@ -15,8 +17,10 @@ class HomeController
 
     public function test()
     {
+        $users = Database::getInstance()->all("Users",["name","email"]);
+
         echo $this->json([
-            "msg" => "test"
+            "users" => $users
         ]);
     }
 

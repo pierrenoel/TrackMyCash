@@ -1,0 +1,15 @@
+{
+  "name": "pierre/track-my-cash",
+  "autoload": {
+    "psr-4": {
+      "Pierre\\TrackMyCash\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Pierre",
+      "email": "pierrenoel1509@gmail.com"
+    }
+  ],
+  "require": {}
+}

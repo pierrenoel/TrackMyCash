@@ -1,15 +1,27 @@
 <?php 
 
 namespace Pierre\TrackMyCash\controllers;
+use Pierre\TrackMyCash\core\Response;
 
 class HomeController 
 {
-    public function index($id){
-        echo $id;
+    use Response;
+
+    public function index($param){
+        echo $this->json([
+            "msg" => "index"
+        ]);
     }
 
     public function test()
     {
-        echo "test";
+        echo $this->json([
+            "msg" => "test"
+        ]);
+    }
+
+    public function post($param)
+    {
+       echo $param["name"];
     }
 }

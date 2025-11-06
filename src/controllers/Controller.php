@@ -12,7 +12,7 @@ class Controller
         }
     }
 
-    public function loadController(string $controller, string $action, $param = null)
+    public function loadController(string $controller, string $action, array $param = null)
     {
         $controllerClass = "Pierre\\TrackMyCash\\controllers\\" . $controller;
         $controller = new $controllerClass();

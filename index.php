@@ -8,12 +8,17 @@ use Pierre\TrackMyCash\core\Router;
 
 $router = new Router();
 
-// $router->get("/",HomeController::class,"index",["id","name"]);
-// $router->get("/test",HomeController::class,"test");
-// $router->post("/post",HomeController::class,"post",["name"]);
-
 // Categories
-$router->get("/category",CategoryController::class,"index");
-$router->post("/category",CategoryController::class,"store",["name","user_id"]);
+$router->get("/categories",CategoryController::class,"index");
+$router->get("/category",CategoryController::class,"show",["id"]);
+$router->post("/categories",CategoryController::class,"store",["name","user_id"]);
+$router->delete("/categories",CategoryController::class,"delete",["id"]);
+
+// Transaction
+$router->get("/transactions",TransactionController::class,"index");
+$router->post("/transactions",TransactionController::class,"store",[
+    "type","amount","description","user_id","category_id"
+]);
+$router->delete("/transactions",TransactionController::class,"delete",["id"]);
 
 $router->run();

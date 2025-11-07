@@ -3,16 +3,23 @@
 TrackMyCash is a personal finance management API that helps users track their income and expenses efficiently.
 
 ## Install
-```
 
+```
+git clone git@github.com:pierrenoel/TrackMyCash.git
+composer install
 ```
 
 ## Endpoints
 
-| Method   | Endpoint    | Controller / Method        | Required Parameters | Description                                   |
-| -------- | ----------- | -------------------------- | ------------------- | --------------------------------------------- |
-| **GET**  | `/category` | `CategoryController@index` | _None_              | Retrieve a list of all categories.            |
-| **POST** | `/category` | `CategoryController@store` | `name`, `user_id`   | Create a new category associated with a user. |
+| Method     | Endpoint        | Controller / Method            | Required Parameters                                       | Description                                                     |
+| ---------- | --------------- | ------------------------------ | --------------------------------------------------------- | --------------------------------------------------------------- |
+| **GET**    | `/categories`   | `CategoryController@index`     | _None_                                                    | Retrieve a list of all categories.                              |
+| **GET**    | `/category`     | `CategoryController@show`      | `id`                                                      | Retrieve a single category by its ID.                           |
+| **POST**   | `/categories`   | `CategoryController@store`     | `name`, `user_id`                                         | Create a new category associated with a user.                   |
+| **DELETE** | `/categories`   | `CategoryController@delete`    | `id`                                                      | Delete a category by its ID.                                    |
+| **GET**    | `/transactions` | `TransactionController@index`  | _None_                                                    | Retrieve a list of all transactions.                            |
+| **POST**   | `/transactions` | `TransactionController@store`  | `type`, `amount`, `description`, `user_id`, `category_id` | Create a new transaction associated with a user and a category. |
+| **DELETE** | `/transactions` | `TransactionController@delete` | `id`                                                      | Delete a transaction by its ID.                                 |
 
 ## Database
 

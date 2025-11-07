@@ -17,19 +17,40 @@ trait Response
         return json_encode($msg,JSON_UNESCAPED_UNICODE);
     }
 
-    public function json(array $response)
+    public function json(int $status, string $title, array $data, ?string $message = null)
     {
         header('Content-Type: application/json');
-        http_response_code(200);
-        return json_encode($response,JSON_UNESCAPED_UNICODE);
+        
+        http_response_code($status);
+
+        $response = ["status" => $status];
+
+        if (!empty($message)) $response["msg"] = $message;
+
+        $response[$title] = $data;
+
+        echo json_encode($response,JSON_UNESCAPED_UNICODE);
+
+        return;
     }
 
-    public function error404()
+    public function success_202()
     {
-        return $this->error(404,enums\Errors::ERROR404);
+        header('Content-Type: application/json');
+        http_response_code(202);
     }
 
-      public function error400()
+    public function error_404_Not_Found()
+    {
+        return $this->error(404,enums\Errors::ERROR404_NOTFOUND);
+    }
+
+    public function error_404_Resource_Not_Found()
+    {
+        return $this->error(404,enums\Errors::ERROR404_RESOURCENOTFOUND);
+    }
+
+      public function error_400()
     {
         return $this->error(400,enums\Errors::ERROR400);
     }
